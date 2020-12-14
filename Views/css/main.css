@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap");
+
+html,
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  background-color: #2B4A6F;
+}
+
+.col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+}
+
+#imgHeader {
+  height: 7vh;
+}
+
+#userButton {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+nav {
+  background-color: none;
+}
+
+nav div a span {
+  text-align: center;
+  font-size: 2vh;
+  color: rgb(184, 184, 184);
+}
+
+.fixed-top.scrolled {
+  background-color: #000000 !important;
+  transition: background-color 500ms linear;
+}
+
+header {
+  padding: 0 100px;
+  height: 90vh;
+  background-color: #c43a2d;
+  width: 100%;
+  background: url(../img/banner.jpg) no-repeat right center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    padding: 0 100px;
+    height: 90vh;
+    background-color: #c43a2d;
+    width: 100%;
+    background: url(../img/gymboxCover.png);
+  }
+}
+
+#profilePic {
+  width: 100%;
+  float: left;
+}
+
+@media screen and (max-width: 600px) {
+  #profilePic {
+    display: none;
+  }
+}
+
+section {
+  background-color: #000000;
+  padding: 10vh 0;
+}
+
+
+.userIconCol {
+  height: 50px;
+}
+
+#userIcon {
+  text-align: center;
+  font-size: 8vh;
+  color: #ffffff;
+}
+
+.table {
+  max-width: 35%;
+  border: none;
+  border-radius: 5px;
+  padding: 25px;
+}
+
+@media screen and (max-width: 1800px) {
+  .table {
+    max-width: 35%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .table {
+    max-width: 70%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .table {
+    max-width: 100%;
+  }
+}
+
+form {
+  width: 100%;
+}
+
+.usernameRow,
+.passwordRow {
+  background-color: none;
+  margin: 30px 0px;
+  width: 100%;
+}
+
+.logInInputs,
+.logInInputs:focus {
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #97251bdc;
+  text-align: center;
+}
+
+.logInInputs::placeholder {
+  /* Most modern browsers support this now. */
+  color: #ffffff;
+  font-size: 0.8em;
+}
+
+.inputLogin:focus {
+  border: 1px solid #ffffff;
+}
+
+.loginInputContainer {
+  width: 100%;
+}
+
+.loginInputContainer input {
+  width: 100%;
+  margin: 0px;
+  padding: 5px 0px;
+  border-radius: 5px;
+}
+
+.loginBoton {
+  color: #ffffff;
+  background-color: #97251bdc;
+  border: 1px solid #97251bdc;
+}
+
+.loginBoton:hover {
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.form-group i {
+  float: right;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-top: -30px;
+}
+
+.adm-group i {
+  float: right;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-top: -65px;
+}
