@@ -2,11 +2,11 @@
 
 _Log In and registration system_
 
-## Comenzando 🚀
+## First steps 🚀
 
 _These instructions will let you have a working copy of this project in your local host. For educational, development and testing purposes._
 
-### Pre-requisitos 📋
+### Pre-requisites 📋
 
 _In order for the app to work you should:_
 
@@ -30,8 +30,6 @@ _In order to execute this project correctly you have to:_
       Set mail configuration in ResetPasswordHelper.php
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
 ## Running tests ⚙️
 
 _In order to run tests you have to:_
@@ -44,11 +42,12 @@ _In order to run tests you have to:_
       Add project folders to composer's autoload
 ```
 
-## Construido con 🛠️
+## Built with 🛠️
 
-* [Composer](https://getcomposer.org/)
-* [PHPUnit](https://phpunit.de/)
-* [PHPMailer](https://github.com/PHPMailer/PHPMailer)
+* [Composer](https://getcomposer.org/) - Dependencies manager in PHP
+* [PHPUnit](https://phpunit.de/) - Testing framework for PHP
+* [PHPMailer](https://github.com/PHPMailer/PHPMailer) - Open-source PHP library to send emails
+* [MailBoxLayer](https://mailboxlayer.com/) - Email verification API
 
 ## Autor ✒️
 
