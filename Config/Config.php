@@ -2,7 +2,7 @@
 
 define("ROOT", dirname(__DIR__) . "/");
 //Path to your project's root folder
-define("FRONT_ROOT", "/PROJECTS/log-in-system" . "/");
+define("FRONT_ROOT", "/");
 define("VIEWS_PATH", "Views/");
 define("DATA_PATH", "Data/");
 define("CSS_PATH", FRONT_ROOT.VIEWS_PATH . "css/");
