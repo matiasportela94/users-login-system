@@ -41,8 +41,8 @@ class ResetPasswordHelper
                 $mail->isSMTP();                                            // Send using SMTP
                 $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                $mail->Username   = 'your@mail.com';                     // SMTP username
-                $mail->Password   = 'secret';                               // SMTP password
+                $mail->Username   = USER_EMAIL;                     // SMTP username
+                $mail->Password   = USER_PW;                               // SMTP password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
                 $mail->Port       = 587;
                 $mail->SMTPOptions = array(
@@ -54,15 +54,12 @@ class ResetPasswordHelper
                 );                                  // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
                 //Recipients
-                $mail->setFrom('from@mail.com', 'John Doe');
-                //$mail->addAddress('matiasportela94@gmail.com', 'Matias Portela');     // Add a recipient
-                $mail->addAddress("$emailTo", 'Jane Doe');     // Add a recipient
+                $mail->setFrom(USER_EMAIL, 'John Doe');     //Change John Doe to your business mail 
+                $mail->addAddress("$emailTo", 'Jane Doe');     // Change Jane Doe to recipients name
                 $mail->addReplyTo('no-reply@mail.com', 'Information');
 
                 // Content
                 $url = "http://" . $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) . "/Views/ShowChangePassword?token=$token";
-                //$url = "http://localhost/GymBox2/Views/ShowChangePassword?token=$token";
-                //$url = "http://www.gymboxmoreno.com.ar/Views/ShowChangePassword?token=$token";
                 
                 $mail->isHTML(true);                                  // Set email format to HTML
                 $mail->Subject = 'Solicitud cambio de contraseña';

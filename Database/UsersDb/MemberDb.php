@@ -16,7 +16,7 @@ class MemberDb implements IMemberDb
     {
         try {
             $con = Connection::getInstance();
-            $query = 'INSERT INTO members(dni,email,password,firstName,lastName,enabled, membershipId, lastUpdate) VALUES(:dni, :email, :password, :firstName, :lastName, :enabled, :membershipId, :lastUpdate);';
+            $query = 'INSERT INTO members(dni,email,password,firstName,lastName,enabled, lastUpdate) VALUES(:dni, :email, :password, :firstName, :lastName, :enabled, :lastUpdate);';
 
             $params['dni'] = $member->GetDni();
             $params['email'] = $member->GetEmail();
@@ -24,8 +24,7 @@ class MemberDb implements IMemberDb
             $params['firstName'] = $member->GetFirstName();
             $params['lastName'] = $member->GetLastName();
             $params['enabled'] = $member->isEnabled();
-            $params['membershipId'] = $member->getMembership();
-            $params['lastUpdate'] = $member->getLastUpdate();
+            $params['lastUpdate'] = $member->GetLastUpdate();
 
             return $con->executeNonQuery($query, $params);
         } catch (PDOException $e) {
@@ -39,19 +38,6 @@ class MemberDb implements IMemberDb
             $con = Connection::getInstance();
 
             $query = "UPDATE members SET enabled = 0 WHERE id=" . $idMember;
-
-            $con->Execute($query);
-        } catch (PDOException $ex) {
-            throw $ex;
-        }
-    }
-
-    public function disableByDate(string $date)
-    {
-        try {
-            $con = Connection::getInstance();
-
-            $query = "UPDATE members SET enabled = 0 WHERE lastUpdate=" . $date;
 
             $con->Execute($query);
         } catch (PDOException $ex) {
@@ -159,8 +145,6 @@ class MemberDb implements IMemberDb
     public function getActives()
     {
         try {
-            $pendingMembers = array();
-
             $query = "SELECT * FROM members WHERE enabled = 1 ";
 
             $con = Connection::getInstance();
@@ -212,7 +196,7 @@ class MemberDb implements IMemberDb
 
         $resp = array_map(function ($p) {
             $memberFactory = new MemberFactory();
-            return $memberFactory->create($p["id"], $p["dni"], $p["email"], $p["password"], $p["firstName"], $p["lastName"], $p["enabled"], $p["membershipId"], $p["lastUpdate"]);
+            return $memberFactory->create($p["id"], $p["dni"], $p["email"], $p["password"], $p["firstName"], $p["lastName"], $p["enabled"], $p["lastUpdate"]);
         }, $value);
 
         return count($resp) > 1 ? $resp : $resp[0];

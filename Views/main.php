@@ -10,7 +10,7 @@
   </header>
 
 
-  <section id="about" style="width: 100%;">
+  <section id="lorem" style="width: 100%;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">

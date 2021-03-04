@@ -20,7 +20,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo FRONT_ROOT . "LogIn\LogOut" ?>">Cerrar Sesión</a>
+          <a class="nav-link" href="<?php echo FRONT_ROOT . "LogIn/LogOut" ?>">Cerrar Sesión</a>
         </li>
 
       </ul>

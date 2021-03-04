@@ -22,19 +22,10 @@ class SessionHelper
 
     public static function setSessionByUserClass($user)
     {
-        $userClass = get_class($user);
 
-        switch ($userClass) {
-            case Member::class:
-                SessionHelper::setSession('loggedMember', $user);
-                break;
+        SessionHelper::setSession('loggedMember', $user);
 
-            case Admin::class:
-                SessionHelper::setSession('loggedAdmin', $user);
-                break;
-        }
-
-        if(SessionHelper::isSession('loggedMember') || SessionHelper::isSession('loggedAdmin')){
+        if(SessionHelper::isSession('loggedMember')){
             return true;
         }else{
             return false;

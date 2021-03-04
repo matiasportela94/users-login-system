@@ -10,13 +10,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="btn text-white bg-dark w-90" href="#about">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn text-white bg-dark w-90" href="#services">Servicios</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn text-white bg-dark w-90" href="#contact">Contacto</a>
+            <a class="btn text-white bg-dark w-90" href="#lorem">Lorem</a>
           </li>
 
           <form action="<?php echo FRONT_ROOT . 'Views/ShowLogIn' ?>">

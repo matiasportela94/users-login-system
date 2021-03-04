@@ -2,7 +2,6 @@
 
 namespace Controllers;
 
-use Database\UsersDb\AdminDb as AdminDB;
 use Database\UsersDb\MemberDb as MemberDb;
 use Models\Users\Member as Member;
 use Models\Users\Admin as Admin;
@@ -16,7 +15,6 @@ class LogInController
     public function __construct()
     {
         $this->memberDb = new MemberDb();
-        $this->adminDb = new AdminDb();
     }
 
     public function memberLogIn($email, $password)
@@ -25,55 +23,26 @@ class LogInController
         $this->RedirectLogIn($isLogged, 'loggedMember');
     }
 
-    public function adminLogIn($email, $password)
-    {
-        $isLogged = $this->ValidateLogIn(Admin::class, $email, $password);
-        $this->RedirectLogIn($isLogged, 'loggedAdmin');
-    }
 
     public function ValidateLogIn($userClass, string $email, string $password)
     {
-        switch ($userClass) {
-            case Member::class:
-                $member = $this->VerifyEmailOrDni($email, $userClass);
-                if (!empty($member)) {
-                    $isLogged = $this->VerifyPassword($password, $member);
-                    return $isLogged;
-                }
-                break;
-
-            case Admin::class:
-                $admin = $this->VerifyEmailOrDni($email, $userClass);
-                if (!empty($admin)) {
-                    $isLogged = $this->VerifyPassword($password, $admin);
-                    return $isLogged;
-
-                }
-                break;
+        $isLogged = false;
+        $member = $this->VerifyEmailOrDni($email, $userClass);
+        if (!empty($member)) {
+            $isLogged = $this->VerifyPassword($password, $member);
         }
-
+        return $isLogged;
     }
 
-    public function VerifyEmailOrDni(string $email, $userClass)
+    public function VerifyEmailOrDni(string $email)
     {
         $user = false;
         $dni = intval($email);
-        switch ($userClass) {
-            case Member::class:
-                if ($dni == 0) {
-                    $user = $this->memberDb->GetByEmail($email);
-                } else {
-                    $user = $this->memberDb->GetByDNI($dni);
-                }
-                break;
 
-            case Admin::class:
-                if ($dni == 0) {
-                    $user = $this->adminDb->GetByEmail($email);
-                } else {
-                    $user = $this->adminDb->GetByDNI($dni);
-                }
-                break;
+        if ($dni == 0) {
+            $user = $this->memberDb->GetByEmail($email);
+        } else {
+            $user = $this->memberDb->GetByDNI($dni);
         }
 
         return $user;
@@ -82,8 +51,8 @@ class LogInController
     public function VerifyPassword(string $password, $user)
     {
         $verify = password_verify($password, $user->getPassword());
-        
-        if($verify){
+
+        if ($verify) {
             return (SessionHelper::setSessionByUserClass($user));
         }
 
@@ -103,9 +72,9 @@ class LogInController
     public function redirectLogIn($isLogged, $sessionKey)
     {
         if ($isLogged) {
-            if($this->isEnabled(SessionHelper::getValue($sessionKey))){
+            if ($this->isEnabled(SessionHelper::getValue($sessionKey))) {
                 ViewsController::showProfile($sessionKey);
-            }else{
+            } else {
                 $message = "La validacion de tu cuenta tarda 24/48hs.<br>Si el problema persiste comunicate con nosotros.";
                 ViewsController::showLogIn("", $message);
             }
@@ -115,7 +84,8 @@ class LogInController
         }
     }
 
-    public function logOut() {
+    public function logOut()
+    {
         SessionHelper::destroySession();
         ViewsController::showIndex();
     }
